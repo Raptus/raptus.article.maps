@@ -10,16 +10,17 @@ Code overview
 
 Components
 ----------
-plone.abovecontentbody:
-
+plone.abovecontentbody
+``````````````````````
 - raptus.article.maps.left
 - raptus.article.maps.right
 - raptus.article.maps.full
 
 Interfaces
 ----------
-file: interfaces.py
 
+file: interfaces.py
+```````````````````
 - IMaps (Provider for maps contained in an article)
     - getMaps - method (Returns a list of maps (catalog brains))
 

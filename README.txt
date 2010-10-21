@@ -1,18 +1,23 @@
 Introduction
 ============
 
-Provides a maps contenttype to be added to articles
+Provides a maps content type to be added to articles
 
 The following features for raptus.article are provided by this package:
 
-    * Map - add google maps in a article.
-    * Components:
-        * Maps (List of maps contained in the article over the whole width.)
-        * Maps left (List of maps contained in the article on the left side.)
-        * Maps right (List of maps contained in the article on the right side.)
+Content
+-------
+    * Map - add google maps in an article.
+    * Marker - add markers in a map.
 
-Dependencies:
+Components
+----------
+    * Maps (List of maps contained in the article over the whole width.)
+    * Maps left (List of maps contained in the article on the left side.)
+    * Maps right (List of maps contained in the article on the right side.)
 
+Dependencies
+------------
     * raptus.googlemaps
     * raptus.article.core
 
@@ -65,7 +70,5 @@ in the article in which this component is active.
 Copyright and credits
 =====================
 
-raptus.article is copyrighted by raptus_, and licensed under the GPL. 
+raptus.article is copyrighted by `Raptus AG <http://raptus.com>`_ and licensed under the GPL. 
 See LICENSE.txt for details.
-
-.. _raptus: http://raptus.com/ 
