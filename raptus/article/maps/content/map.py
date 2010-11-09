@@ -1,6 +1,7 @@
 """Definition of the Map content type
 """
 from zope.interface import implements
+from Products.Archetypes.utils import IntDisplayList
 
 try:
     from Products.LinguaPlone import public as atapi
@@ -14,6 +15,7 @@ from raptus.article.maps.interfaces import IMap
 from raptus.article.maps.config import PROJECTNAME
 from raptus.article.core import RaptusArticleMessageFactory as _
 from raptus.article.core.componentselection import ComponentSelectionWidget
+
 
 MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         atapi.StringField('geocode',
@@ -51,7 +53,7 @@ MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             searchable=False,
             languageIndependent=True,
             enforceVocabulary=True,
-            vocabulary=[str(i) for i in range(0, 20)],
+            vocabulary=IntDisplayList([(i, str(i),) for i in range(0, 20)]),
             default=10,
             storage = atapi.AnnotationStorage(),
             widget = atapi.SelectionWidget(
