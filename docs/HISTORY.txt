@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b4 (2010-11-10)
+------------------
+
+* Fixed vocabulary of the zoom field (Added IntDisplayList)
+
 2.0b3 (2010-10-21)
 ------------------
 
