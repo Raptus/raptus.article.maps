@@ -14,13 +14,14 @@ from Products.CMFCore.utils import getToolByName
 context.REQUEST.environ['PATH_TRANSLATED'] = '/'.join(context.getPhysicalPath())
 catalog = getToolByName(context, 'portal_catalog')
 maps = catalog(portal_type='Map')
-
 if not len(maps):
     return ''
 
 template = """
 jQuery(document).ready(function() {
+  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"/>')
   %(maps)s
+  jQuery('%(all_markers)s').hide()
 });
 """
 
@@ -28,7 +29,7 @@ map_template = """
 var props = {};
 %(props)s%(markers)s
 jQuery('.map.%(id)s').each(function() {
-  jQuery(this).googleMaps(props);
+  jQuery(this).goMap(props);
 });
 """
 
@@ -38,11 +39,13 @@ markers_template = """props['markers'] = [
 
 marker_template = """{
  %(props)s,
- 'info': {
-   'layer': '.%(map_id)s + .markers .%(marker_id)s'
+ 'html': {
+   'id': '.%(map_id)s + .markers .%(marker_id)s',
  }
 }"""
 
+
+all_markers = []
 map_templates = []
 for map in maps:
     obj = map.getObject()
@@ -52,19 +55,25 @@ for map in maps:
     if obj.getLongitude():
         props['longitude'] = obj.getLongitude()
     if obj.getDepth():
-        props['depth'] = obj.getDepth()
-    if obj.getHideControls():
-        props['controls'] = "{'hide': true}"
-    props['scroll'] = obj.getEnableScrollZoom() and 'true' or 'false'
-    props['type'] = '"%s"' % obj.getMapType()
+        props['zoom'] = obj.getDepth()
+    props['mapTypeControl'] = obj.getHideControls() and 'false' or 'true'
+    props['navigationControl'] = obj.getHideControls() and 'false' or 'true'
+    props['scrollwheel'] = obj.getEnableScrollZoom() and 'true' or 'false'
+    props['streetViewControl'] = obj.getEnableStreetView() and 'true' or 'false'
+    props['maptype'] = '"%s"' % obj.getMapType()
     if obj.getLayer():
         props['layer'] = '"%s"' % obj.getLayer()
+        
+        
     marker_brains = catalog(portal_type='Marker', path={'query': '/'.join(obj.getPhysicalPath()),
                                                         'depth': 1})
     markers = []
     for marker in marker_brains:
         marker_obj = marker.getObject()
+        all_markers.append('.%s' % marker.UID)
         marker_props = {}
+        # default icon override it in portal_skin
+        marker_props['icon'] = '"%s/googlemaps_marker.png"' % context.absolute_url()
         if marker_obj.getLatitude():
             marker_props['latitude'] = marker_obj.getLatitude()
         if marker_obj.getLongitude():
@@ -75,5 +84,11 @@ for map in maps:
     map_templates.append(map_template % dict(id=map.UID,
                                              props=''.join(['props["%(name)s"] = %(value)s;\n' % dict(name=name, value=value) for name, value in props.items()]),
                                              markers=markers and markers_template % dict(markers=',\n'.join(markers)) or ''))
+all_markers = ', '.join(all_markers)
+    
+    
+return template % dict(maps='\n'.join(map_templates),all_markers=all_markers)
 
-return template % dict(maps='\n'.join(map_templates))
+
+
+

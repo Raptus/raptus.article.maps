@@ -51,5 +51,10 @@
 #archetypes-fieldname-geocode {
   display:none;
 }
+/* fix scrollbar with managebox */
+.map .gmnoprint .manage{
+  right:15px;
+}
+
 
 /* </dtml-with> */

@@ -42,4 +42,11 @@
         image="marker_icon.gif"
         />
 
+  <browser:page
+      for="*"
+      name="raptus.article.maps.helperview"
+      class=".view.HelperView"
+      permission="zope.Public"
+      />
+
 </configure>

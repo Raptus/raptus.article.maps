@@ -82,6 +82,17 @@ MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 label=_(u'label_enable_scroll', default=u'Enable scroll wheel zoom')
             ),
         ),
+        atapi.BooleanField('enableStreetView',
+            required=False,
+            searchable=False,
+            languageIndependent=True,
+            default=False,
+            storage = atapi.AnnotationStorage(),
+            widget = atapi.BooleanWidget(
+                description = '',
+                label=_(u'label_enable_streetview', default=u'Enable street view')
+            ),
+        ),
         atapi.StringField('mapType',
             required=True,
             searchable=False,
@@ -89,9 +100,10 @@ MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             default='G_NORMAL_MAP',
             enforceVocabulary=True,
             storage = atapi.AnnotationStorage(),
-            vocabulary=(('G_NORMAL_MAP', _(u'Normal')),
-                        ('G_SATELLITE_MAP', _(u'Satellite')),
-                        ('G_HYBRID_MAP', _(u'Hybrid')),),
+            vocabulary=(('ROADMAP', _(u'Roadmap')),
+                        ('SATELLITE', _(u'Satellite')),
+                        ('HYBRID', _(u'Hybrid')),
+                        ('TERRAIN', _(u'Terrain')),),
             widget = atapi.SelectionWidget(
                 format = 'radio',
                 description = '',
@@ -105,7 +117,8 @@ MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             storage = atapi.AnnotationStorage(),
             widget = atapi.StringWidget(
                 description = '',
-                label=_(u'label_layer', default=u'Layer')
+                label=_(u'label_layer', default=u'Layer'),
+                visible=False, # not supported from gomap jquery plugin
             ),
         ),
         atapi.LinesField('components',
@@ -147,5 +160,17 @@ class Map(base.ATCTFolder):
     enableScrollZoom = atapi.ATFieldProperty('enableScrollZoom')
     mapType = atapi.ATFieldProperty('mapType')
     layer = atapi.ATFieldProperty('layer')
+    
+    def getMapType(self):
+        """ backward compatibility
+            merge old maptype to map v3
+        """
+        value = self.Schema()['mapType'].get(self)
+        if value.startswith('G_'):
+            if value == 'G_NORMAL_MAP':
+                return 'ROADMAP'
+            return value[2:-4]
+        return value
+        
 
 atapi.registerType(Map, PROJECTNAME)
