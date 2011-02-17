@@ -1,6 +1,11 @@
 Changelog
 =========
 
+
+2.0b7 (2011-02-17)
+------------------
+* plone 3 compatibility
+
 2.0b6 (2011-02-17)
 ------------------
 * Change jQuery Plugin. New Plugin is goMap

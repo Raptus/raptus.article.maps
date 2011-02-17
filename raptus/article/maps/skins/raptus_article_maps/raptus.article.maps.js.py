@@ -19,7 +19,7 @@ if not len(maps):
 
 template = """
 jQuery(document).ready(function() {
-  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"/>');
+  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"></div>');
   %(maps)s
   jQuery('%(all_markers)s').hide();
 });
