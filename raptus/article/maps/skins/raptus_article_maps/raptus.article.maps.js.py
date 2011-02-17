@@ -19,9 +19,9 @@ if not len(maps):
 
 template = """
 jQuery(document).ready(function() {
-  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"/>')
+  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"/>');
   %(maps)s
-  jQuery('%(all_markers)s').hide()
+  jQuery('%(all_markers)s').hide();
 });
 """
 
@@ -40,7 +40,7 @@ markers_template = """props['markers'] = [
 marker_template = """{
  %(props)s,
  'html': {
-   'id': '.%(map_id)s + .markers .%(marker_id)s',
+   'id': '.%(map_id)s + .markers .%(marker_id)s'
  }
 }"""
 
