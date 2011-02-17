@@ -95,7 +95,7 @@ msgstr "Profondeur du zoom"
 #. Default: "Enable scroll wheel zoom"
 #: content/map.py:80
 msgid "label_enable_scroll"
-msgstr "Activer le zoom avec la mit Mausrad einschalten"
+msgstr "Activer le zoom avec la molette"
 
 #. Default: "Hide controls"
 #: content/map.py:69
@@ -131,3 +131,14 @@ msgstr "Texte"
 #: content/map.py:26
 msgid "label_street_zip_city"
 msgstr "Rue no., NPA Localité"
+
+
+msgid "Terrain"
+msgstr "Relief"
+
+msgid "Roadmap"
+msgstr "Plan"
+
+msgid "Enable street view"
+msgstr "Activer street view"
+

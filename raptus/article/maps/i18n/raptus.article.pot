@@ -133,3 +133,14 @@ msgstr ""
 msgid "label_street_zip_city"
 msgstr ""
 
+
+msgid "Terrain"
+msgstr ""
+
+msgid "Roadmap"
+msgstr ""
+
+msgid "Enable street view"
+msgstr ""
+
+

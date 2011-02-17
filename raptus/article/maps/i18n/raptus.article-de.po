@@ -132,3 +132,16 @@ msgstr "Text"
 #: content/map.py:26
 msgid "label_street_zip_city"
 msgstr "Strasse Nr., PLZ Ort"
+
+msgid "Terrain"
+msgstr "Gelände"
+
+msgid "Roadmap"
+msgstr "Karte"
+
+msgid "Enable street view"
+msgstr "Street View einschalten"
+
+
+
+
