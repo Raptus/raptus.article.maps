@@ -140,7 +140,7 @@ msgstr ""
 msgid "Roadmap"
 msgstr ""
 
-msgid "Enable street view"
+msgid "label_enable_streetview"
 msgstr ""
 
 

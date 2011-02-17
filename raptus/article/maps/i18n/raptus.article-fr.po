@@ -139,6 +139,6 @@ msgstr "Relief"
 msgid "Roadmap"
 msgstr "Plan"
 
-msgid "Enable street view"
+msgid "label_enable_streetview"
 msgstr "Activer street view"
 

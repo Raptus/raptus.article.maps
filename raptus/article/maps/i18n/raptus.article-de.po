@@ -139,7 +139,7 @@ msgstr "Gelände"
 msgid "Roadmap"
 msgstr "Karte"
 
-msgid "Enable street view"
+msgid "label_enable_streetview"
 msgstr "Street View einschalten"
 
 
