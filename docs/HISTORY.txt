@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b9 (2011-03-07)
+------------------
+
+* Added condition for all javascript files to prevent errors if api and plugin is missing
+
 2.0b8 (2011-03-07)
 ------------------
 

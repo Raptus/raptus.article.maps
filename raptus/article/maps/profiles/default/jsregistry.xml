@@ -18,7 +18,7 @@
               compression="none"
               cookable="True"
               enabled="True"
-              expression=""
+              expression="context/@@raptus.article.maps.helperview/hasMaps"
               inline="False"/>
 
   <javascript id="raptus.article.maps.js"
@@ -26,7 +26,7 @@
               compression="none"
               cookable="False"
               enabled="True"
-              expression=""
+              expression="context/@@raptus.article.maps.helperview/hasMaps"
               inline="False"/>
 
 </object>
