@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b10 (2011-04-05)
+------------------
+
+* fix the order for all javascript files
+
 2.0b9 (2011-03-07)
 ------------------
 
