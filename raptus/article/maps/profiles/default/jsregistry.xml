@@ -6,7 +6,7 @@
               compression="none"
               cookable="False"
               enabled="True"
-              expression="python:context.absolute_url()[4:5] != 's' and context.restrictedTraverse('context/@@raptus.article.maps.helperview/hasMaps')()"
+              expression="python:not context.absolute_url().startswith('https') and context.restrictedTraverse('@@raptus.article.maps.helperview/hasMaps')()"
               inline="False"
               insert-after="raptus.article.maps.geocode.js"/>
 
@@ -15,7 +15,7 @@
               compression="none"
               cookable="False"
               enabled="True"
-              expression="python:context.absolute_url()[4:5] == 's' and context.restrictedTraverse('context/@@raptus.article.maps.helperview/hasMaps')()"
+              expression="python:context.absolute_url().startswith('https') and context.restrictedTraverse('@@raptus.article.maps.helperview/hasMaps')()"
               inline="False"
               insert-after="raptus.article.maps.geocode.js"/>
 

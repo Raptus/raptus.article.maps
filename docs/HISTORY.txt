@@ -1,8 +1,13 @@
 Changelog
 =========
 
-2.0b11 (2011-05-6)
-------------------
+2.0b12 (2011-05-09)
+-------------------
+
+* fixed javascript registry expressions and helper view to prevent Unauthorized exception
+
+2.0b11 (2011-05-06)
+-------------------
 * update jquery gomap to version 1.3.0 (raptus.googlemaps product)
 * add http/https support
 * pin google maps version to 3.3 (this fixed issues with the newest nightly version)
