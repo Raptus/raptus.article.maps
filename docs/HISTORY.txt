@@ -13,7 +13,7 @@ Changelog
 * pin google maps version to 3.3 (this fixed issues with the newest nightly version)
 
 2.0b10 (2011-04-05)
-------------------
+-------------------
 
 * fix the order for all javascript files
 
