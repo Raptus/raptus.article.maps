@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b12'
+version = '2.0b13'
 
 setup(name='raptus.article.maps',
       version=version,
@@ -25,7 +25,7 @@ setup(name='raptus.article.maps',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'raptus.googlemaps',
+          'raptus.googlemaps>=1.0b7',
           'raptus.article.core',
           # -*- Extra requirements: -*-
       ],

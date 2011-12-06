@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b13 (2011-12-06)
+-------------------
+
+* adjusted javascript registry to match the one from raptus.googlemaps 1.0b7
+
 2.0b12 (2011-05-09)
 -------------------
 
