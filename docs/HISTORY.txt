@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b14 (Unreleased)
+-------------------
+
+* fixed jsregistry (ordering)
+
 2.0b13 (2011-12-06)
 -------------------
 
