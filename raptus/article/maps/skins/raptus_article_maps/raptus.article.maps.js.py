@@ -93,7 +93,7 @@ all_markers = ', '.join(all_markers)
 wrap = ''
 hide = ''
 if all_markers:
-    wrap = wrap_template % all_markers
-    hide = hide_template % all_markers
+    wrap = wrap_template % dict(all_markers=all_markers)
+    hide = hide_template % dict(all_markers=all_markers)
 
 return template % dict(maps='\n'.join(map_templates), wrap=wrap, hide=hide)
