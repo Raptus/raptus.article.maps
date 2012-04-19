@@ -7,7 +7,8 @@
               cookable="False"
               enabled="True"
               expression="python:not context.absolute_url().startswith('https') and context.restrictedTraverse('@@raptus.article.maps.helperview/hasMaps')()"
-              inline="False"/>
+              inline="False"
+              insert-top="True"/>
 
   <!-- https support  -->
   <javascript id="https://maps-api-ssl.google.com/maps/api/js?sensor=false"
@@ -25,7 +26,7 @@
               enabled="True"
               expression="context/@@raptus.article.maps.helperview/hasMaps"
               inline="False"
-              insert-after="https://maps-api-ssl.google.com/maps/api/js?sensor=false"/>
+              insert-bottom="True"/>
 
   <javascript id="raptus.article.maps.geocode.js"
               cacheable="True"

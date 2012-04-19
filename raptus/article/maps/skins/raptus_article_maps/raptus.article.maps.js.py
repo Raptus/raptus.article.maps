@@ -19,11 +19,15 @@ if not len(maps):
 
 template = """
 jQuery(document).ready(function() {
-  jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"></div>');
+  %(wrap)s
   %(maps)s
-  jQuery('%(all_markers)s').hide();
+  %(hide)s
 });
 """
+
+wrap_template = """jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"></div>');"""
+
+hide_template = """jQuery('%(all_markers)s').hide();"""
 
 map_template = """
 var props = {};
@@ -85,10 +89,11 @@ for map in maps:
                                              props=''.join(['props["%(name)s"] = %(value)s;\n' % dict(name=name, value=value) for name, value in props.items()]),
                                              markers=markers and markers_template % dict(markers=',\n'.join(markers)) or ''))
 all_markers = ', '.join(all_markers)
-    
-    
-return template % dict(maps='\n'.join(map_templates),all_markers=all_markers)
 
+wrap = ''
+hide = ''
+if all_markers:
+    wrap = wrap_template % all_markers
+    hide = hide_template % all_markers
 
-
-
+return template % dict(maps='\n'.join(map_templates), wrap=wrap, hide=hide)

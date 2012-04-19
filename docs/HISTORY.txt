@@ -1,9 +1,10 @@
 Changelog
 =========
 
-2.0b14 (Unreleased)
+2.0b14 (2012-04-19)
 -------------------
 
+* fixed raptus.article.maps.js.py to work if no marker is available
 * fixed jsregistry (ordering)
 
 2.0b13 (2011-12-06)
