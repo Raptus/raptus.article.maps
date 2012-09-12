@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b16 (2012-09-12)
+-------------------
+
+* added new option to enable centering by markers
+
 2.0b15 (2012-04-19)
 -------------------
 

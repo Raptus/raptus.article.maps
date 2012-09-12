@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b15'
+version = '2.0b16'
 
 setup(name='raptus.article.maps',
       version=version,
