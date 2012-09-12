@@ -34,6 +34,7 @@ var props = {};
 %(props)s%(markers)s
 jQuery('.map.%(id)s').each(function() {
   jQuery(this).goMap(props);
+  %(center)s
 });
 """
 
@@ -52,6 +53,7 @@ marker_template = """{
 all_markers = []
 map_templates = []
 for map in maps:
+    center = ''
     obj = map.getObject()
     props = {}
     if obj.getLatitude():
@@ -67,8 +69,11 @@ for map in maps:
     props['maptype'] = '"%s"' % obj.getMapType()
     if obj.getLayer():
         props['layer'] = '"%s"' % obj.getLayer()
-        
-        
+    if obj.getEnableCenteredView():
+        center = """$.goMap.fitBounds('visible');"""
+
+
+
     marker_brains = catalog(portal_type='Marker', path={'query': '/'.join(obj.getPhysicalPath()),
                                                         'depth': 1})
     markers = []
@@ -87,7 +92,8 @@ for map in maps:
                                               marker_id=marker.UID))
     map_templates.append(map_template % dict(id=map.UID,
                                              props=''.join(['props["%(name)s"] = %(value)s;\n' % dict(name=name, value=value) for name, value in props.items()]),
-                                             markers=markers and markers_template % dict(markers=',\n'.join(markers)) or ''))
+                                             markers=markers and markers_template % dict(markers=',\n'.join(markers)) or '',
+                                             center=center))
 all_markers = ', '.join(all_markers)
 
 wrap = ''

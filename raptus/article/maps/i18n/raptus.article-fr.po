@@ -132,7 +132,6 @@ msgstr "Texte"
 msgid "label_street_zip_city"
 msgstr "Rue no., NPA Localité"
 
-
 msgid "Terrain"
 msgstr "Relief"
 
@@ -141,4 +140,7 @@ msgstr "Plan"
 
 msgid "label_enable_streetview"
 msgstr "Activer street view"
+
+msgid "label_enable_centeredview"
+msgstr "Centrer la carte selon les repères"
 

@@ -93,6 +93,17 @@ MapSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 label=_(u'label_enable_streetview', default=u'Enable street view')
             ),
         ),
+        atapi.BooleanField('enableCenteredView',
+            required=False,
+            searchable=False,
+            languageIndependent=True,
+            default=True,
+            storage = atapi.AnnotationStorage(),
+            widget = atapi.BooleanWidget(
+                description = '',
+                label=_(u'label_enable_centeredview', default=u'Enable centered view')
+            ),
+        ),
         atapi.StringField('mapType',
             required=True,
             searchable=False,
@@ -146,7 +157,7 @@ schemata.finalizeATCTSchema(MapSchema, folderish=False, moveDiscussion=True)
 class Map(base.ATCTFolder):
     """A map"""
     implements(IMap)
-    
+
     portal_type = "Map"
     schema = MapSchema
 
@@ -158,9 +169,10 @@ class Map(base.ATCTFolder):
     depth = atapi.ATFieldProperty('depth')
     hideControls = atapi.ATFieldProperty('hideControls')
     enableScrollZoom = atapi.ATFieldProperty('enableScrollZoom')
+    center = atapi.ATFieldProperty('enableCenteredView')
     mapType = atapi.ATFieldProperty('mapType')
     layer = atapi.ATFieldProperty('layer')
-    
+
     def getMapType(self):
         """ backward compatibility
             merge old maptype to map v3
@@ -171,6 +183,6 @@ class Map(base.ATCTFolder):
                 return 'ROADMAP'
             return value[2:-4]
         return value
-        
+
 
 atapi.registerType(Map, PROJECTNAME)

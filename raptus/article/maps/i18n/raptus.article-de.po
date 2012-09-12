@@ -142,6 +142,7 @@ msgstr "Karte"
 msgid "label_enable_streetview"
 msgstr "Street View einschalten"
 
-
+msgid "label_enable_centeredview"
+msgstr "Karte anhand Marker zentrieren"
 
 
