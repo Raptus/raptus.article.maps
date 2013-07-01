@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0b17 (unreleased)
+2.0b17 (2013-07-01)
 -------------------
 
 * Adjusted javascript initialization to work with the new component selection functionality
