@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0b17 (unreleased)
+-------------------
+
+* Adjusted javascript initialization to work with the new component selection functionality
+  introduced in raptus.article.core 2.0b13
+
 2.0b16 (2012-09-12)
 -------------------
 

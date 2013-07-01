@@ -18,22 +18,32 @@ if not len(maps):
     return ''
 
 template = """
-jQuery(document).ready(function() {
-  %(wrap)s
-  %(maps)s
-  %(hide)s
-});
+(function($) {
+
+  function init(e) {
+    var container = $(this);
+    %(wrap)s
+    %(maps)s
+    %(hide)s
+  }
+
+  $(document).ready(function(e) {
+    $.proxy(init, $('body'))(e);
+    $('.viewletmanager').on('viewlets.updated', init);
+  });
+
+})(jQuery);
 """
 
-wrap_template = """jQuery('%(all_markers)s').wrapInner('<div class="gmnoprint"></div>');"""
+wrap_template = """container.find('%(all_markers)s').wrapInner('<div class="gmnoprint"></div>');"""
 
-hide_template = """jQuery('%(all_markers)s').hide();"""
+hide_template = """container.find('%(all_markers)s').hide();"""
 
 map_template = """
 var props = {};
 %(props)s%(markers)s
-jQuery('.map.%(id)s').each(function() {
-  jQuery(this).goMap(props);
+container.find('.map.%(id)s').each(function() {
+  $(this).goMap(props);
   %(center)s
 });
 """
