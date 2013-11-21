@@ -2,14 +2,12 @@ from zope import interface, component
 
 from Products.CMFCore.utils import getToolByName
 
-from raptus.article.core.interfaces import IArticle
 from raptus.article.maps.interfaces import IMap, IMaps, IMarkers
 
 class Maps(object):
     """ Provider for maps contained in an article
     """
     interface.implements(IMaps)
-    component.adapts(IArticle)
     
     def __init__(self, context):
         self.context = context
@@ -17,9 +15,11 @@ class Maps(object):
     def getMaps(self, **kwargs):
         """ Returns a list of maps (catalog brains)
         """
+        if not 'path' in kwargs:
+            kwargs['path'] = {'query': '/'.join(self.context.getPhysicalPath()),
+                              'depth': 1}
         catalog = getToolByName(self.context, 'portal_catalog')
-        return catalog(portal_type='Map', path={'query': '/'.join(self.context.getPhysicalPath()),
-                                                'depth': 1}, sort_on='getObjPositionInParent', **kwargs)
+        return catalog(portal_type='Map', sort_on='getObjPositionInParent', **kwargs)
 
 class Markers(object):
     """ Provider for markers contained in a map

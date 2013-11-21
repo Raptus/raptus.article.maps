@@ -4,7 +4,8 @@ Changelog
 2.0b18 (unreleased)
 -------------------
 
-- Nothing changed yet.
+* Adjusted raptus.article.maps.js.py to use the provided adapters rather than a direct call to
+  portal_catalog to enable overrides such as in raptus.article.alias
 
 
 2.0b17 (2013-07-01)

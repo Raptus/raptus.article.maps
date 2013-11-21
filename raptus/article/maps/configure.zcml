@@ -23,10 +23,22 @@
       />
       
     <adapter
+      for="raptus.article.core.interfaces.IArticle"
       factory=".adapters.Maps" />
-      
+    <adapter
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      factory=".adapters.Maps" />
+    <class class=".adapters.Maps">
+      <allow
+        interface=".interfaces.IMaps" />
+    </class>
+
     <adapter
       factory=".adapters.Markers" />
+    <class class=".adapters.Markers">
+      <allow
+        interface=".interfaces.IMarkers" />
+    </class>
              
     <adapter 
       factory=".index.Index"

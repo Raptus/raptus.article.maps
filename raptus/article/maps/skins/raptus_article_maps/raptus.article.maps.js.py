@@ -8,12 +8,11 @@
 ##title=
 ##
 
-from Products.CMFCore.utils import getToolByName
+from raptus.article.maps.interfaces import IMaps, IMarkers
 
 # LinguaPlone needs this to get the preferred language
 context.REQUEST.environ['PATH_TRANSLATED'] = '/'.join(context.getPhysicalPath())
-catalog = getToolByName(context, 'portal_catalog')
-maps = catalog(portal_type='Map')
+maps = IMaps(context).getMaps(path={'query': '/'})
 if not len(maps):
     return ''
 
@@ -84,8 +83,7 @@ for map in maps:
 
 
 
-    marker_brains = catalog(portal_type='Marker', path={'query': '/'.join(obj.getPhysicalPath()),
-                                                        'depth': 1})
+    marker_brains = IMarkers(obj).getMarkers()
     markers = []
     for marker in marker_brains:
         marker_obj = marker.getObject()

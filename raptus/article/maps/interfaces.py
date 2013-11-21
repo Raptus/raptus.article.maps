@@ -1,5 +1,9 @@
 from zope import interface
+from AccessControl import ModuleSecurityInfo
 
+security = ModuleSecurityInfo('raptus.article.maps.interfaces')
+
+security.declarePublic('IMaps')
 class IMaps(interface.Interface):
     """ Provider for maps contained in an article
     """
@@ -8,6 +12,7 @@ class IMaps(interface.Interface):
         """ Returns a list of maps (catalog brains)
         """
 
+security.declarePublic('IMarkers')
 class IMarkers(interface.Interface):
     """ Provider for markers contained in a map
     """
