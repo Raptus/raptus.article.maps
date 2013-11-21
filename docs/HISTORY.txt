@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0b18 (unreleased)
+2.0b18 (2013-11-21)
 -------------------
 
 * Adjusted raptus.article.maps.js.py to use the provided adapters rather than a direct call to
